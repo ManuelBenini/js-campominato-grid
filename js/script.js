@@ -9,7 +9,7 @@ Quando l’utente clicca su ogni cella, la cella cliccata si colora di azzurro.
 
 const btnPlay = document.getElementById('mb_play_btn');
 const container = document.querySelector('.mb_second_container');
-let numberList = [];
+// let numberList = [];
 
 
 btnPlay.addEventListener('click', function(){
@@ -34,11 +34,12 @@ btnPlay.addEventListener('click', function(){
  * @param {} 
  */
   function init(num) {
-    for(let i = 0; i < num; i++){
-      const sq = createSquare(container, num);
-      getUniqueRandomNumber(num)
-      console.log(numberList.sort());
-      sq.addEventListener('click', function(){
+    for(let i = 1; i <= num; i++){
+      const square = createSquare(container, num);
+      // getUniqueRandomNumber(num)
+      // console.log(numberList.sort());
+      square.innerHTML = `<span>${i}</span>`;
+      square.addEventListener('click', function(){
         this.classList.add('clicked');
       })
     }
@@ -54,8 +55,8 @@ btnPlay.addEventListener('click', function(){
   function createSquare(htmlElement, num) {
     const square = document.createElement('div');
     square.className = 'mb_square';
-    const number = getRandomNumber(1, 100);
-    square.innerHTML = `<span>${number}</span>`;
+    // const number = getRandomNumber(1, num);
+    // square.innerHTML = `<span>${number}</span>`;
     if(num === 49){
       square.classList.add('square49');
     }else if(num === 81){
@@ -70,14 +71,14 @@ btnPlay.addEventListener('click', function(){
 
 
 /**
- * Generare numeri random
- * @param {number} min 
- * @param {number} max 
- * @returns 
- */
- function getRandomNumber(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
+   * Generare numeri random
+   * @param {number} min 
+   * @param {number} max 
+   * @returns 
+   */
+  // function getRandomNumber(min, max) {
+  //   return Math.floor(Math.random() * (max - min + 1) + min);
+  // }
 //
 
 
@@ -85,19 +86,19 @@ btnPlay.addEventListener('click', function(){
  * Generare numeri random unici
  * @returns 
  */
-  function getUniqueRandomNumber(num) {
-    let number;
-    let valid = false;
+  // function getUniqueRandomNumber(num) {
+  //   let number;
+  //   let valid = false;
     
-    while(!valid){
-      number = getRandomNumber(1, num);
+  //   while(!valid){
+  //     number = getRandomNumber(1, num);
 
-      if(!numberList.includes(number)){
-        valid = true;
-        numberList.push(number);
-      }
-    }
+  //     if(!numberList.includes(number)){
+  //       valid = true;
+  //       numberList.push(number);
+  //     }
+  //   }
 
-    return number;
-  }
+  //   return number;
+  // }
 //
